@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsnoaifx4mu3e"]
+[gd_scene load_steps=5 format=3 uid="uid://dsnoaifx4mu3e"]
+
+[ext_resource type="PackedScene" uid="uid://brx7lns00huoj" path="res://scene/game map/game_map.tscn" id="1_wti1k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bhb"]
 
@@ -20,6 +22,4 @@ environment = SubResource("Environment_xvejf")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.216048, 0.976383, 0, -0.976383, 0.216048, 327.88, 327.99, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(517.25, 0, 0, 0, 11.561, 0, 0, 0, 100, -1.34321, 0, 0.767342)
-size = Vector3(5.67627, 1, 21.7876)
+[node name="Game Map" parent="." instance=ExtResource("1_wti1k")]
