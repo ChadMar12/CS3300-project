@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsnoaifx4mu3e"]
+[gd_scene load_steps=6 format=3 uid="uid://dwaenk4p557w0"]
 
-[ext_resource type="PackedScene" uid="uid://brx7lns00huoj" path="res://scene/game map/game_map.tscn" id="1_wti1k"]
+[ext_resource type="PackedScene" uid="uid://dnb8lu1klc3em" path="res://scene/game map/map_in_progress.tscn" id="1_7un1g"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addon/proto_controller/proto_controller.tscn" id="2_7un1g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bhb"]
 
@@ -12,14 +13,18 @@ process_mode = 1
 background_mode = 2
 sky = SubResource("Sky_1g7so")
 ambient_light_source = 1
+tonemap_mode = 4
 
-[node name="Game world" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.757713, -3.8147e-06, 0.105103)
+[node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xvejf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.216048, 0.976383, 0, -0.976383, 0.216048, 327.88, 327.99, 0)
+transform = Transform3D(-0.0402353, 0.780435, -0.623941, -0.16241, 0.611034, 0.774765, 0.985903, 0.132507, 0.102165, -2058.67, 2481.79, 544.257)
 
-[node name="Game Map" parent="." instance=ExtResource("1_wti1k")]
+[node name="Map-In_Progress" parent="." instance=ExtResource("1_7un1g")]
+
+[node name="ProtoController" parent="." instance=ExtResource("2_7un1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.315, 80.5514, 0)
+can_sprint = true
