@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwaenk4p557w0"]
+[gd_scene load_steps=6 format=3 uid="uid://dwaenk4p557w0"]
 
 [ext_resource type="PackedScene" uid="uid://dnb8lu1klc3em" path="res://scene/game map/map_in_progress.tscn" id="1_7un1g"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addon/proto_controller/proto_controller.tscn" id="2_7un1g"]
-[ext_resource type="PackedScene" uid="uid://cw3vises2217f" path="res://assets/Tree_01.fbx" id="3_26ej7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bhb"]
 
@@ -29,6 +28,3 @@ transform = Transform3D(-0.0402353, 0.780435, -0.623941, -0.16241, 0.611034, 0.7
 [node name="ProtoController" parent="." instance=ExtResource("2_7un1g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.315, 80.5514, 0)
 can_sprint = true
-
-[node name="Tree_01" parent="." instance=ExtResource("3_26ej7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.098, 79.8266, 95.1975)
