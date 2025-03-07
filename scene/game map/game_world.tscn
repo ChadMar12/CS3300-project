@@ -21,10 +21,9 @@ tonemap_mode = 4
 environment = SubResource("Environment_xvejf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.0402353, 0.780435, -0.623941, -0.16241, 0.611034, 0.774765, 0.985903, 0.132507, 0.102165, -2058.67, 2481.79, 544.257)
+transform = Transform3D(-0.569164, 0.593642, -0.568895, -0.00317259, 0.690307, 0.723509, 0.822218, 0.4136, -0.391015, -823.601, 1001.79, -423.893)
 
 [node name="Map-In_Progress" parent="." instance=ExtResource("1_7un1g")]
 
 [node name="ProtoController" parent="." instance=ExtResource("2_7un1g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.315, 80.5514, 0)
-can_sprint = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 283.477, 80.4782, 104.169)
