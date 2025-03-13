@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwaenk4p557w0"]
 
-[ext_resource type="PackedScene" uid="uid://dnb8lu1klc3em" path="res://scene/game map/map_in_progress.tscn" id="1_7un1g"]
+[ext_resource type="PackedScene" uid="uid://capwn8otk3klc" path="res://scene/game map/map_in_progress.tscn" id="1_7un1g"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addon/proto_controller/proto_controller.tscn" id="2_7un1g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bhb"]
@@ -26,4 +26,4 @@ transform = Transform3D(-0.569164, 0.593642, -0.568895, -0.00317259, 0.690307, 0
 [node name="Map-In_Progress" parent="." instance=ExtResource("1_7un1g")]
 
 [node name="ProtoController" parent="." instance=ExtResource("2_7un1g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 283.477, 80.4782, 104.169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.896, 82.8187, 57.231)
