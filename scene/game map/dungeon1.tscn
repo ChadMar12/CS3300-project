@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://joqh6tm4q63e"]
-
-[ext_resource type="PackedScene" uid="uid://d0dflqnv5q87h" path="res://Dungeons/dungeon1.blend" id="1_hesl8"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="dungeon1" parent="." instance=ExtResource("1_hesl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47234, 0, 2.60314)
