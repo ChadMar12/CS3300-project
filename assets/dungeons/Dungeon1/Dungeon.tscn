@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqdeb7v4kw64b"]
+
+[ext_resource type="PackedScene" uid="uid://dvrmtbwx4devu" path="res://Dungeon/dungeon1.glb" id="1_ftoyu"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="dungeon1" parent="." instance=ExtResource("1_ftoyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424039, -1.19209e-07, -4.52568)
