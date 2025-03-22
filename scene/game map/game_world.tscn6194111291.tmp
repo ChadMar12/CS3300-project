@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwaenk4p557w0"]
+
+[ext_resource type="PackedScene" uid="uid://cegf288ebhrq2" path="res://scene/game map/wip_map.tscn" id="1_7un1g"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addon/proto_controller/proto_controller.tscn" id="2_7un1g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bhb"]
+
+[sub_resource type="Sky" id="Sky_1g7so"]
+sky_material = SubResource("ProceduralSkyMaterial_v7bhb")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_xvejf"]
+background_mode = 2
+sky = SubResource("Sky_1g7so")
+ambient_light_source = 1
+tonemap_mode = 4
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xvejf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.569164, 0.593642, -0.568895, -0.00317259, 0.690307, 0.723509, 0.822218, 0.4136, -0.391015, -823.601, 1001.79, -423.893)
+
+[node name="WIP Map" parent="." instance=ExtResource("1_7un1g")]
+
+[node name="ProtoController" parent="." instance=ExtResource("2_7un1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -313.389, 83.6299, 647.288)
