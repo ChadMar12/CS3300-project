@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl6i838ff5yxl"
-path.s3tc="res://.godot/imported/WIPMap_Texture.png-98e6829e3f5c7c91c7be1a36deb32ef7.s3tc.ctex"
+uid="uid://cg1jbx753vski"
+path.s3tc="res://.godot/imported/mapOriginal_CartoonTown_Texture_01_4.png-d7c318a0d2cec57c1cbe8b5db66708c0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "554f5bb1b4bf133cf92d493027c7998c"
+"md5": "d47b18902fad80338d4e628a74dc8b90"
 }
 
 [deps]
 
-source_file="res://assets/game map/WIPMap_Texture.png"
-dest_files=["res://.godot/imported/WIPMap_Texture.png-98e6829e3f5c7c91c7be1a36deb32ef7.s3tc.ctex"]
+source_file="res://assets/game map/mapOriginal_CartoonTown_Texture_01_4.png"
+dest_files=["res://.godot/imported/mapOriginal_CartoonTown_Texture_01_4.png-d7c318a0d2cec57c1cbe8b5db66708c0.s3tc.ctex"]
 
 [params]
 

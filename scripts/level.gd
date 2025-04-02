@@ -32,6 +32,11 @@ func switchLevel(target: String):
 			level_manager.main_world = main_scene.instantiate()
 			root.add_child(level_manager.main_world)
 			tree.set_current_scene(level_manager.main_world)
+			
+			# Need to work on this some more
+			var player = level_manager.main_world.get_node('ProtoController')
+			if player:
+				player.global_transform.origin = level_manager.spawn_location
 		
 
 		if current_scene and current_scene != level_manager.main_world:
@@ -46,3 +51,8 @@ func switchLevel(target: String):
 		var new_scene = load(Scene[target]).instantiate()
 		root.add_child(new_scene)
 		tree.set_current_scene(new_scene)
+		
+		# Need to work on this some more
+		var player = level_manager.main_world.get_node('ProtoController')
+		if player:
+			level_manager.spawn_location = player.global_transform.origin 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wsh0ogl2712d"
-path.s3tc="res://.godot/imported/WIPMap_FantasyForest_Texture_01.png-e5cf80e88bbec810c55de115341ebbf3.s3tc.ctex"
+uid="uid://ke1lq7jqko3o"
+path.s3tc="res://.godot/imported/mapOriginal_Texture_01_1.png-aaa73eb085e64b8fd541b8de55115ea8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "87566eadd4c4d87da2063cbffe3db242"
+"md5": "fed60d83e26d8741b6539b5812d1a086"
 }
 
 [deps]
 
-source_file="res://assets/game map/WIPMap_FantasyForest_Texture_01.png"
-dest_files=["res://.godot/imported/WIPMap_FantasyForest_Texture_01.png-e5cf80e88bbec810c55de115341ebbf3.s3tc.ctex"]
+source_file="res://assets/game map/mapOriginal_Texture_01_1.png"
+dest_files=["res://.godot/imported/mapOriginal_Texture_01_1.png-aaa73eb085e64b8fd541b8de55115ea8.s3tc.ctex"]
 
 [params]
 
