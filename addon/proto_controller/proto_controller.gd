@@ -44,6 +44,7 @@ extends CharacterBody3D
 ## Name of Input Action to toggle freefly mode.
 @export var input_freefly : String = "freefly"
 
+
 var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
@@ -53,21 +54,67 @@ var freeflying : bool = false
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 
+@onready var skin = null
+
+@onready var characters_types = {
+	'Knight'    : $Characters/Knight,
+	'Mage'      : $Characters/Mage,
+	'Barbarian' : $Characters/Barbarian,
+	'Druid'		: $Characters/Druid,
+	'Rouge'		: $Characters/Rouge
+}
+
 func _ready() -> void:
+	
+	var type = level_manager.character_selected 
+	character_load(type)
+	
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
 
+##This funciton will load the character based on the selection that the 
+##player has choosen.
+func character_load(type : String):
+
+	match type:
+		'Knight':
+			skin = characters_types['Knight']
+		'Mage':
+			skin = characters_types['Mage']
+		'Barbarian':
+			skin = characters_types['Barbarian']
+		'Druid':
+			skin = characters_types['Druid']
+		'Rouge':
+			skin = characters_types['Rouge']
+		
+	unload_character_scene(type) # Function to unload the other scene's from memory
+		   
+
+## This function unloads the character scene that is not being used to save on memory
+func unload_character_scene(type):
+	
+	for character_type in characters_types:
+		if character_type != type and characters_types != null:
+			characters_types[character_type].queue_free()  
+
 func _unhandled_input(event: InputEvent) -> void:
+	
 	# Mouse capturing
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		capture_mouse()
+		
 	if Input.is_key_pressed(KEY_ESCAPE):
 		release_mouse()
 	
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
-		rotate_look(event.relative)
+		rotate_y(deg_to_rad(-event.relative.x * look_speed))
+		head.rotate_x(deg_to_rad(-event.relative.y * look_speed))
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+		
+		#rotate_look(event.relative)
 	
 	# Toggle freefly mode
 	if can_freefly and Input.is_action_just_pressed(input_freefly):
@@ -77,6 +124,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			disable_freefly()
 
 func _physics_process(delta: float) -> void:
+	
+	ability_logic()
+	
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
@@ -94,43 +144,37 @@ func _physics_process(delta: float) -> void:
 	if can_jump:
 		if Input.is_action_just_pressed(input_jump) and is_on_floor():
 			velocity.y = jump_velocity
-
+			
 	# Modify speed based on sprinting
 	if can_sprint and Input.is_action_pressed(input_sprint):
 			move_speed = sprint_speed
+			skin.set_move_state('Running_A')
 	else:
 		move_speed = base_speed
+		skin.set_move_state('Walking_A')
 
 	# Apply desired movement to velocity
 	if can_move:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 		var move_dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if move_dir:
+		
+		# We have the jumping code working here but I do not like it, We need to find a way to refactor this code
+		if not is_on_floor():
+			skin.set_move_state('Jump_Idle')
+		elif move_dir:
 			velocity.x = move_dir.x * move_speed
 			velocity.z = move_dir.z * move_speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, move_speed)
 			velocity.z = move_toward(velocity.z, 0, move_speed)
+			skin.set_move_state('Idle')
 	else:
 		velocity.x = 0
 		velocity.y = 0
+		
 	
 	# Use velocity to actually move
 	move_and_slide()
-
-
-## Rotate us to look around.
-## Base of controller rotates around y (left/right). Head rotates around x (up/down).
-## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
-func rotate_look(rot_input : Vector2):
-	look_rotation.x -= rot_input.y * look_speed
-	look_rotation.x = clamp(look_rotation.x, deg_to_rad(-85), deg_to_rad(85))
-	look_rotation.y -= rot_input.x * look_speed
-	transform.basis = Basis()
-	rotate_y(look_rotation.y)
-	head.transform.basis = Basis()
-	head.rotate_x(look_rotation.x)
-
 
 func enable_freefly():
 	collider.disabled = true
@@ -141,16 +185,17 @@ func disable_freefly():
 	collider.disabled = false
 	freeflying = false
 
-
 func capture_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true
-
 
 func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
 
+func ability_logic() -> void:
+	if Input.is_action_just_pressed('ability'):
+		skin.attack()
 
 ## Checks if some Input Actions haven't been created.
 ## Disables functionality accordingly.
