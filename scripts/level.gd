@@ -6,12 +6,12 @@ const Scene = {
 	'Dungeon1': "res://scene/Dungeon/Dungeon.tscn"
 }
 
-func _ready():
-	
-	if level_manager.main_world == null:
-		var main_scene = load(Scene['MainWorld'])
-		level_manager.main_world = main_scene.instantiate()
-		get_tree().get_root().add_child(level_manager.main_world)
+#func _ready():
+	#
+	#if level_manager.main_world == null:
+		#var main_scene = load(Scene['MainWorld'])
+		#level_manager.main_world = main_scene.instantiate()
+		#get_tree().get_root().add_child(level_manager.main_world)
 
 func switchLevel(target: String):
 	var tree = get_tree()

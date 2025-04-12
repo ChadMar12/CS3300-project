@@ -6,7 +6,6 @@ func _on_knight_pressed() -> void:
 	level_manager.character_selected = 'Knight'
 	get_tree().change_scene_to_file("res://scene/game map/game_world.tscn")
 
-
 func _on_mage_pressed() -> void:
 	level_manager.character_selected = 'Mage'
 	get_tree().change_scene_to_file("res://scene/game map/game_world.tscn")

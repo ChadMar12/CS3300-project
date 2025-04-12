@@ -96,7 +96,7 @@ func character_load(type : String):
 func unload_character_scene(type):
 	
 	for character_type in characters_types:
-		if character_type != type and characters_types != null:
+		if character_type != type:
 			characters_types[character_type].queue_free()  
 
 func _unhandled_input(event: InputEvent) -> void:
