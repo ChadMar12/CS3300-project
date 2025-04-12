@@ -4,26 +4,27 @@ extends Control
 
 func _on_knight_pressed() -> void:
 	level_manager.character_selected = 'Knight'
-	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
+	get_tree().change_scene_to_file("res://scene/game map/game_world.tscn")
+
 
 func _on_mage_pressed() -> void:
 	level_manager.character_selected = 'Mage'
-	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
+	get_tree().change_scene_to_file("res://scene/game map/game_world.tscn")
 
 
 func _on_barbarian_pressed() -> void:
 	level_manager.character_selected = 'Barbarian'
-	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
+	get_tree().change_scene_to_file("res://scene/game map/game_world.tscn")
 
 
 func _on_rouge_pressed() -> void:
 	level_manager.character_selected = 'Rouge'
-	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
+	get_tree().change_scene_to_file("res://scene/game map/game_world.tscn")
 
 
 func _on_druid_pressed() -> void:
 	level_manager.character_selected = 'Druid'
-	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
+	get_tree().change_scene_to_file("res://scene/game map/game_world.tscn")
 
 
 func _on_knight_mouse_entered() -> void:

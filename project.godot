@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="CS3300 Project"
-run/main_scene="uid://dvafw24ehf7s7"
+run/main_scene="uid://dwaenk4p557w0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 level_manager="*res://scripts/level_manager.gd"
-level="*res://scripts/level.gd"
 
 [debug]
 
