@@ -16,8 +16,6 @@ func _ready():
 		level_manager.main_world = main_scene.instantiate()
 		get_tree().get_root().add_child(level_manager.main_world)
 
-
-
 func switchLevel(target: String):
 	var tree = get_tree()
 	var root = tree.get_root()
