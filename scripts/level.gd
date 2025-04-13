@@ -1,6 +1,8 @@
 class_name Level
 extends Node
 
+var dungeonCounter = 1
+
 const Scene = {
 	'MainWorld': "res://scene/game map/game_world.tscn",
 	'Dungeon1': "res://scene/Dungeon/Dungeon.tscn",
@@ -13,6 +15,8 @@ func _ready():
 		var main_scene = load(Scene['MainWorld'])
 		level_manager.main_world = main_scene.instantiate()
 		get_tree().get_root().add_child(level_manager.main_world)
+
+
 
 func switchLevel(target: String):
 	var tree = get_tree()
@@ -33,8 +37,9 @@ func switchLevel(target: String):
 			if player:
 				player.global_transform.origin = level_manager.spawn_location
 				
-		else:
 		
+		else:
+	
 			var main_scene = load(Scene['MainWorld'])
 			level_manager.main_world = main_scene.instantiate()
 			root.add_child(level_manager.main_world)
