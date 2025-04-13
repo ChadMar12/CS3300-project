@@ -3,7 +3,8 @@ extends Node
 
 const Scene = {
 	'MainWorld': "res://scene/game map/game_world.tscn",
-	'Dungeon1': "res://scene/Dungeon/Dungeon.tscn"
+	'Dungeon1': "res://scene/Dungeon/Dungeon.tscn",
+	'Dungeon2': "res://scene/Dungeon/Dungeon2.tscn"
 }
 
 func _ready():
