@@ -54,6 +54,9 @@ var freeflying : bool = false
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 
+@onready var ui = $"In game UI"
+var health = 100
+
 @onready var skin = null
 
 @onready var characters_types = {
@@ -72,6 +75,8 @@ func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
+	
+	ui.setup(health)
 
 ##This funciton will load the character based on the selection that the 
 ##player has choosen.
