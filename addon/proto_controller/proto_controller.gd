@@ -1,48 +1,26 @@
-# ProtoController v1.0 by Brackeys
-# CC0 License
-# Intended for rapid prototyping of first-person games.
-# Happy prototyping!
-
 extends CharacterBody3D
 
-## Can we move around?
-@export var can_move : bool = true
-## Are we affected by gravity?
-@export var has_gravity : bool = true
-## Can we press to jump?
-@export var can_jump : bool = true
-## Can we hold to run?
-@export var can_sprint : bool = false
-## Can we press to enter freefly mode (noclip)?
-@export var can_freefly : bool = false
+@export var can_move : bool = true				## Can we move around?
+@export var has_gravity : bool = true			## Are we affected by gravity?
+@export var can_jump : bool = true				## Can we press to jump?
+@export var can_sprint : bool = false			## Can we hold to run?
+@export var can_freefly : bool = false			## Can we press to enter freefly mode (noclip)?
 
-@export_group("Speeds")
-## Look around rotation speed.
-@export var look_speed : float = 0.002
-## Normal speed.
-@export var base_speed : float = 7.0
-## Speed of jump.
-@export var jump_velocity : float = 4.5
-## How fast do we run?
-@export var sprint_speed : float = 10.0
-## How fast do we freefly?
-@export var freefly_speed : float = 25.0
+@export_group("Speeds")							
+@export var look_speed : float = 0.002			## Look around rotation speed.
+@export var base_speed : float = 7.0			## Normal speed.
+@export var jump_velocity : float = 4.5			## Speed of jump.
+@export var sprint_speed : float = 10.0			## How fast do we run?
+@export var freefly_speed : float = 25.0		## How fast do we freefly?
 
-@export_group("Input Actions")
-## Name of Input Action to move Left.
-@export var input_left : String = "ui_left"
-## Name of Input Action to move Right.
-@export var input_right : String = "ui_right"
-## Name of Input Action to move Forward.
-@export var input_forward : String = "ui_up"
-## Name of Input Action to move Backward.
-@export var input_back : String = "ui_down"
-## Name of Input Action to Jump.
-@export var input_jump : String = "ui_accept"
-## Name of Input Action to Sprint.
-@export var input_sprint : String = "sprint"
-## Name of Input Action to toggle freefly mode.
-@export var input_freefly : String = "freefly"
+@export_group("Input Actions")				
+@export var input_left : String = "ui_left"		## Name of Input Action to move Left.
+@export var input_right : String = "ui_right"	## Name of Input Action to move Right.
+@export var input_forward : String = "ui_up"	## Name of Input Action to move Forward.
+@export var input_back : String = "ui_down"		## Name of Input Action to move Backward.
+@export var input_jump : String = "ui_accept"	### Name of Input Action to Jump.
+@export var input_sprint : String = "sprint"	## Name of Input Action to Sprint.
+@export var input_freefly : String = "freefly"	## Name of Input Action to toggle freefly mode.
 
 
 var mouse_captured : bool = false
@@ -177,7 +155,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		velocity.y = 0
 		
-	
 	# Use velocity to actually move
 	move_and_slide()
 
@@ -201,6 +178,10 @@ func release_mouse():
 func ability_logic() -> void:
 	if Input.is_action_just_pressed('ability'):
 		skin.attack()
+
+func can_damage(value : bool):
+	$"Characters/Knight/Knight/Rig/Skeleton3D/1H_Sword/1H_Sword".can_damage(value)
+	
 
 ## Checks if some Input Actions haven't been created.
 ## Disables functionality accordingly.
