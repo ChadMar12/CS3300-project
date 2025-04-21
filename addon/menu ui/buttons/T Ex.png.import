@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmrliv0ln7x7a"
-path="res://.godot/imported/panelInset_brown.png-b159b5b1e5e7d231d775b3a97928f0cf.ctex"
+uid="uid://d3ubtt8n65w82"
+path="res://.godot/imported/T Ex.png-92a7a48a8efcd05ca0acbbc7f7bd4862.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addon/menu ui/buttons/panelInset_brown.png"
-dest_files=["res://.godot/imported/panelInset_brown.png-b159b5b1e5e7d231d775b3a97928f0cf.ctex"]
+source_file="res://addon/menu ui/buttons/T Ex.png"
+dest_files=["res://.godot/imported/T Ex.png-92a7a48a8efcd05ca0acbbc7f7bd4862.ctex"]
 
 [params]
 
