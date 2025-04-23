@@ -12,6 +12,7 @@ extends CharacterBody3D
 @export var jump_velocity : float = 4.5			## Speed of jump.
 @export var sprint_speed : float = 10.0			## How fast do we run?
 @export var freefly_speed : float = 25.0		## How fast do we freefly?
+@export var defend_speed : float = 5.0			## How fast you can walk when defending
 
 @export_group("Input Actions")				
 @export var input_left : String = "ui_left"		## Name of Input Action to move Left.
@@ -21,7 +22,6 @@ extends CharacterBody3D
 @export var input_jump : String = "ui_accept"	### Name of Input Action to Jump.
 @export var input_sprint : String = "sprint"	## Name of Input Action to Sprint.
 @export var input_freefly : String = "freefly"	## Name of Input Action to toggle freefly mode.
-
 
 var mouse_captured : bool = false
 var look_rotation : Vector2
@@ -45,6 +45,14 @@ var health = 100
 	'Rouge'		: $Characters/Rouge
 }
 
+var defend = false:
+	set(value):
+		if not defend and value:
+			skin.defend(true)
+		if defend and not value:
+			skin.defend(false)
+		defend = value
+
 func _ready() -> void:
 	
 	var type = level_manager.character_selected 
@@ -56,6 +64,8 @@ func _ready() -> void:
 	
 	ui.setup(health)
 
+	capture_mouse()
+	
 ##This funciton will load the character based on the selection that the 
 ##player has choosen.
 func character_load(type : String):
@@ -74,7 +84,6 @@ func character_load(type : String):
 		
 	unload_character_scene(type) # Function to unload the other scene's from memory
 		   
-
 ## This function unloads the character scene that is not being used to save on memory
 func unload_character_scene(type):
 	
@@ -83,13 +92,13 @@ func unload_character_scene(type):
 			characters_types[character_type].queue_free()  
 
 func _unhandled_input(event: InputEvent) -> void:
-	
-	# Mouse capturing
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		capture_mouse()
 		
-	if Input.is_key_pressed(KEY_ESCAPE):
-		release_mouse()
+	# Toggle mouse capture on Escape key
+	if event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed and not event.echo:
+		if mouse_captured:
+			release_mouse()
+		else:
+			capture_mouse()
 	
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
@@ -141,9 +150,12 @@ func _physics_process(delta: float) -> void:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 		var move_dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
+		base_speed = defend_speed if defend else base_speed
+		
 		# We have the jumping code working here but I do not like it, We need to find a way to refactor this code
 		if not is_on_floor():
 			skin.set_move_state('Jump_Idle')
+			do_squash_and_stretch(1.05,0.15)
 		elif move_dir:
 			velocity.x = move_dir.x * move_speed
 			velocity.z = move_dir.z * move_speed
@@ -178,10 +190,21 @@ func release_mouse():
 func ability_logic() -> void:
 	if Input.is_action_just_pressed('ability'):
 		skin.attack()
-
+	
+	# reimplement in the future
+	#defend = Input.is_action_pressed('block')
+	
 func can_damage(value : bool):
 	$"Characters/Knight/Knight/Rig/Skeleton3D/1H_Sword/1H_Sword".can_damage(value)
 	
+func hit():
+	skin.hit()
+	do_squash_and_stretch(1.2,0.15)
+
+func do_squash_and_stretch(value : float, duration : float = 0.1):
+	var tween = create_tween()
+	tween.tween_property(skin,'squash_and_stretch', value, duration)
+	tween.tween_property(skin, 'squash_and_stretch', 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
 
 ## Checks if some Input Actions haven't been created.
 ## Disables functionality accordingly.
