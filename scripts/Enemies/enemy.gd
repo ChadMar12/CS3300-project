@@ -28,3 +28,18 @@ func move_to_player(delta):
 			velocity = Vector3.ZERO
 			move_state_machine.travel('idle')
 		move_and_slide()
+		
+func stop_movement(start_duration: float, end_duration: float):
+	var tween = create_tween()
+	tween.tween_property(self, 'speed_modifier', 0.0, start_duration)
+	tween.tween_property(self, 'speed_modifier', 1.0, end_duration)
+	
+func hit() -> void:
+	if not $Node/InvulTimer.time_left:
+		do_squash_and_stretch(1.2, 0.15)
+		$Node/InvulTimer.start()
+
+func do_squash_and_stretch(value: float, duration: float = 0.1):
+	var tween = create_tween()
+	tween.tween_property(self, 'squash_and_stretch', value, duration)
+	tween.tween_property(self, 'squash_and_stretch', 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)

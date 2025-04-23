@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	move_to_player(delta)
 
 func _on_attack_timer_timeout() -> void:
-	if position.distance_to(player.position) < 2.0:
+	if position.distance_to(player.position) < 3.0:
 		melee_attack_animation()
 	else:
 		if rng.randi() % 2:
@@ -32,6 +32,7 @@ func _spin_transition(value: float) -> void:
 	$AnimationTree.set("parameters/SpinBlend/blend_amount", value)
 		
 func range_attack_animation() -> void:
+	stop_movement(1.5, 1.5)
 	attack_animation.animation = simple_attacks['range']
 	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	
@@ -46,3 +47,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		tween.tween_method(_spin_transition, 1.0, 0.0, 0.3)
 		spinning = false
 		$Node/AttackTimer.start()
+
+func can_damage(value: bool) -> void:
+	pass
