@@ -5,13 +5,18 @@ extends CharacterBody3D
 @onready var attack_animation = $AnimationTree.get_tree_root().get_node('AttackAnimation')
 @onready var player = get_tree().get_first_node_in_group('Player')
 @onready var skin = get_node('skin')
-var squash_and_stretch: float = 1.0
 
 @export var walk_speed := 6.0
 @export var speed = walk_speed
 var speed_modifier := 1.0
 @export var notice_radius := 30.0
 @export var attack_radius := 3.0
+
+var squash_and_stretch = 1.0:
+	set(value):
+		squash_and_stretch = value
+		var negative = 1.0 + (1.0 - squash_and_stretch)
+		scale = Vector3(negative,squash_and_stretch,negative)
 
 var rng = RandomNumberGenerator.new()
 
@@ -44,8 +49,3 @@ func do_squash_and_stretch(value: float, duration: float = 0.1):
 	var tween = create_tween()
 	tween.tween_property(self, 'squash_and_stretch', value, duration)
 	tween.tween_property(self, 'squash_and_stretch', 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
-
-func set_squash_and_stretch(value: float) -> void:
-	scale.x = 1.0 / value
-	scale.y = value
-	squash_and_stretch = value
