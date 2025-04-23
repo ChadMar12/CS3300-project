@@ -3,8 +3,6 @@ extends Node
 
 var dungeonCounter = 1
 
-
-
 const Scene = {
 	'MainWorld': "res://scene/game map/game_world.tscn",
 	'Dungeon1': "res://scene/Dungeon/Dungeon.tscn",
