@@ -21,6 +21,8 @@ func _on_knight_mouse_exited() -> void:
 
 func _on_knight_pressed() -> void:
 	level_manager.character_selected = 'Knight'
+	level_manager.health = 150
+	level_manager.weapon_image = "res://addon/menu ui/player weapons/sword.png"
 	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
 	
 	
@@ -43,6 +45,8 @@ func _on_mage_mouse_exited() -> void:
 
 func _on_mage_pressed() -> void:
 	level_manager.character_selected = 'Mage'
+	level_manager.health = 75
+	level_manager.weapon_image = "res://addon/menu ui/player weapons/staff.png"
 	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
 	
 
@@ -65,6 +69,8 @@ func _on_barbarian_mouse_exited() -> void:
 	
 func _on_barbarian_pressed() -> void:
 	level_manager.character_selected = 'Barbarian'
+	level_manager.health = 125
+	level_manager.weapon_image = "res://addon/menu ui/player weapons/axe.png"
 	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
 
 
@@ -87,6 +93,8 @@ func _on_rouge_mouse_exited() -> void:
 
 func _on_rouge_pressed() -> void:
 	level_manager.character_selected = 'Rouge'
+	level_manager.health = 100
+	level_manager.weapon_image = "res://addon/menu ui/player weapons/crossbow.png"
 	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')
 
 
@@ -109,4 +117,6 @@ func _on_druid_mouse_exited() -> void:
 
 func _on_druid_pressed() -> void:
 	level_manager.character_selected = 'Druid'
+	level_manager.health = 75
+	level_manager.weapon_image = "res://addon/menu ui/player weapons/druid_staff.png"
 	get_tree().change_scene_to_file('res://scene/ui/loading_scene.tscn')

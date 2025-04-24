@@ -190,6 +190,12 @@ func release_mouse():
 func ability_logic() -> void:
 	if Input.is_action_just_pressed('ability'):
 		skin.attack()
+	elif Input.is_action_just_pressed('special_1'):
+		skin.specialAttack(0)
+	elif Input.is_action_just_pressed("special_2"):
+		skin.specialAttack(1)
+	elif Input.is_action_just_pressed("special_3"):
+		skin.specialAttack(2)
 	
 	# reimplement in the future
 	#defend = Input.is_action_pressed('block')
