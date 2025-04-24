@@ -12,7 +12,7 @@ func deactivate_portal():
 	portal_visual.hide()
 
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(_body: Node3D) -> void:
 	
 	if level_manager.dun == 1:
 		target = 'Dungeon1'

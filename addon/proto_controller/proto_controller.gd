@@ -195,7 +195,7 @@ func ability_logic() -> void:
 	#defend = Input.is_action_pressed('block')
 	
 func can_damage(value : bool):
-	$"Characters/Knight/Knight/Rig/Skeleton3D/1H_Sword/1H_Sword".can_damage(value)
+	skin.can_damage(value)
 	
 func hit():
 	skin.hit()

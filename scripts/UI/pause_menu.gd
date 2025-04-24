@@ -3,7 +3,7 @@ extends Control
 @onready var settings_menu: Options_Menu = $"Settings Menu"
 @onready var proto_controller: CharacterBody3D = %ProtoController
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	optionsMenu()
 
 func _on_options_pressed() -> void:

@@ -40,7 +40,7 @@ func melee_attack_animation():
 	attack_animation.animation = simple_attacks['slice' if rng.randi() % 2 else 'spin']
 	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(_body: Node3D) -> void:
 	if spinning:
 		var tween = create_tween()
 		tween.tween_property(self, 'speed', walk_speed, 0.5)
@@ -48,5 +48,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		spinning = false
 		$Node/AttackTimer.start()
 
-func can_damage(value: bool) -> void:
+func can_damage(_value: bool) -> void:
 	pass

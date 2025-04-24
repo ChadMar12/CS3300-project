@@ -1,5 +1,4 @@
 extends Control
-@onready var proto_controller: CharacterBody3D = %ProtoController
 
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/ui/character_selection.tscn")
