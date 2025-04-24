@@ -2,6 +2,13 @@ extends Node3D
 
 @onready var move_state_machine = $Barbarian/AnimationTree.get("parameters/MoveStateMachine/playback")
 @onready var attack_state_machine = $Barbarian/AnimationTree.get('parameters/AttackStateMachine/playback')
+@onready var extra_animation = $Barbarian/AnimationTree.get_tree_root().get_node('ExtraAnimation')	
+
+var special_attack_dic : Dictionary = {
+	0: '1H_Melee_Attack_Stab',
+	1: '2H_Melee_Attack_Spin',
+	2: '1H_Melee_Attack_Slice_Diagonal'
+}
 
 var attacking = false
 var squash_and_stretch = 1.0:
@@ -27,3 +34,7 @@ func can_damage(value : bool) -> void:
 func hit() -> void:
 	$Barbarian/AnimationTree.set('parameters/ExtraOneShot/request',  AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	attacking = false
+
+func specialAttack(value : int) -> void:
+	extra_animation.animation = special_attack_dic[value]
+	$Barbarian/AnimationTree.set('parameters/ExtraOneShot/request',  AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

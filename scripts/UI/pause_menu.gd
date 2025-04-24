@@ -20,9 +20,6 @@ func optionsMenu() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
 
-
-
-
 func save_game():
 	var saved_game:SavedGame = SavedGame.new()
 	saved_game.player_position = proto_controller.global_position
@@ -31,6 +28,10 @@ func save_game():
 	print(saved_game.character)
 	ResourceSaver.save(saved_game, "user://savegame.tres")
 
-
 func _on_save_pressed() -> void:
 	save_game()
+
+func _on_resume_pressed() -> void:
+	Engine.time_scale = 1
+	self.hide() # Hides the pause menu UI
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

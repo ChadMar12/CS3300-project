@@ -7,3 +7,5 @@ var dun = 1
 var saved_location = Vector3.ZERO
 var health = 0
 var weapon_image = null
+
+	
