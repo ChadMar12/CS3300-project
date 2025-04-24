@@ -1,4 +1,5 @@
 extends Enemy
+
 func _ready() -> void:
 	attack_radius = 1.5
 	

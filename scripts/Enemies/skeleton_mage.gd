@@ -1,7 +1,5 @@
 extends Enemy
 
-signal cast_spell(type: String, pos: Vector3, direction: Vector2, size: float)
-
 func _ready() -> void:
 	attack_radius = 10.0
 	
@@ -14,5 +12,8 @@ func _on_attack_timer_timeout() -> void:
 		$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func shoot_fireball() -> void:
-	cast_spell.emit('fireball', $skin/Rig/Skeleton3D/BoneAttachment3D/Skeleton_Staff2/Marker3D.global_position, Vector2.RIGHT, 1.0)
+	var direction = (player.position - position).normalized()
+	var dir_2d = Vector2(direction.x, direction.z)
+	var pos = $skin/Rig/Skeleton3D/BoneAttachment3D/Skeleton_Staff2/Marker3D.global_position
+	cast_spell.emit('fireball', pos, dir_2d, 1.0)
 	

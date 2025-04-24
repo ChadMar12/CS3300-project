@@ -10,7 +10,6 @@ const simple_attacks = {
 var spinning := false
 var can_damage_toggle := false
 
-
 func _process(_delta: float) -> void:
 	attack_logic()
 
@@ -64,4 +63,9 @@ func attack_logic() -> void:
 		var collider = $skin/Rig/Skeleton3D/BoneAttachment3D/Skeleton_Mace2/RayCast3D.get_collider()
 		if collider and 'hit' in collider:
 			collider.hit()
-			
+
+func shoot_fireball() -> void:
+	var direction = (player.position - position).normalized()
+	var dir_2d = Vector2(direction.x, direction.z)
+	var pos = $skin/Rig/Skeleton3D/BoneAttachment3D/Skeleton_Mace2/Marker3D.global_position
+	cast_spell.emit('fireball', pos, dir_2d, 1.0)

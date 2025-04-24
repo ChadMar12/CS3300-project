@@ -17,7 +17,11 @@ func _ready() -> void:
 			entity.connect('cast_spell', create_fireball)
 
 func create_fireball(type: String, pos: Vector3, direction: Vector2, size: float):
-	print('shoot fireball')
+	# copy and paste this to create fireball for player
+	var fireball = fireball_scene.instantiate()
+	$Projectiles.add_child(fireball)
+	fireball.global_position = pos
+	fireball.direction = direction
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
