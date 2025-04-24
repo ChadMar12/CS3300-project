@@ -36,3 +36,4 @@ func can_damage(value : bool) -> void:
 func hit() -> void:
 	$Knight/AnimationTree.set('parameters/ExtraOneShot/request',  AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	attacking = false
+	
